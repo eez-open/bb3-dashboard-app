@@ -1,17 +1,17 @@
 {
-    "productName": "dashboard-standalone-app",
+    "productName": "bb3-dashboard",
     "version": "0.0.1",
-    "appId": "eu.envox.dashboard-standalone-app",
-    "copyright": "Copyright © 2023 Envox d.o.o",
+    "appId": "eu.envox.bb3-dashboard",
+    "copyright": "Copyright © 2023 Envox d.o.o.",
     "mac": {
         "category": "public.app-category.utilities"
     },
-    "synopsis": "EEZ standalone dashboard app demo",
-    "description": "EEZ standalone dashboard app demo",
+    "synopsis": "A simple BB3 dashboard example",
+    "description": "A simple BB3 dashboard example",
     "theme": "light",
-    "project": "my-app.eez-project",
+    "project": "BB3 dashboard.eez-project",
     "window": {
-        "width": 800,
-        "height": 480
+        "width": 900,
+        "height": 600
     }
 }

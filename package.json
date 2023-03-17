@@ -1,12 +1,12 @@
 {
-    "name": "dashboard-standalone-app",
+    "name": "bb3-dashboard-app",
     "author": "Envox <eez@envox.hr>",
-    "description": "Create desktop application for EEZ Studio Dashboard project",
+    "description": "A simple BB3 dashboard example as desktop application",
     "homepage": "https://www.envox.hr/eez/studio/studio-introduction.html",
     "version": "0.0.1",
     "revision": "1",
     "license": "GPL-3.0-only",
-    "repository": "https://github.com/eez-open/dashboard-standalone-app",
+    "repository": "https://github.com/eez-open/bb3-dashboard-app",
     "main": "build/standalone/main.js",
     "scripts": {
         "postinstall": "electron-builder install-app-deps && node postinstall.js",
