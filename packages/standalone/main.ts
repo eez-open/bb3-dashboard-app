@@ -248,7 +248,8 @@ ipcMain.on(
         const window = findWindowByWebContents(event.sender);
         if (window) {
             if (!window.browserWindow.isMaximized()) {
-                window.browserWindow.setSize(size.width, size.height);
+                // TODO doesn't work reliably
+                // window.browserWindow.setSize(size.width, size.height);
             }
         }
     }
