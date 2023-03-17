@@ -70,7 +70,7 @@
         "@types/usb": "^1.5.3",
         "@types/xml-formatter": "^2.1.1",
         "@types/xterm": "^3.0.0",
-        "eez-studio": "0.0.22",
+        "eez-studio": "0.0.23",
         "electron": "20.3.8",
         "electron-builder": "^23.6.0",
         "electron-rebuild": "^3.2.9",
