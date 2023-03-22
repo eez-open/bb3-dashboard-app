@@ -39,7 +39,6 @@ import { Editor, ProjectStore } from "project-editor/store";
 import { ProjectEditorView } from "project-editor/project/ui/ProjectEditor";
 import { ProjectContext } from "project-editor/project/context";
 import { initProjectEditor } from "project-editor/project-editor-bootstrap";
-import { Loader } from "eez-studio-ui/loader";
 import { settingsController } from "home/settings";
 import { GlobalVariableStatuses } from "project-editor/features/variable/global-variable-status";
 import {
@@ -170,25 +169,7 @@ export class ProjectEditorTab {
         const runtime = projectEditorStore?.runtime;
 
         if (!runtime) {
-            return (
-                <div
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        position: "absolute",
-                        width: "100%",
-                        height: "100%",
-                        overflow: "hidden"
-                    }}
-                >
-                    {this.error ? (
-                        <div className="error">{this.error}</div>
-                    ) : (
-                        <Loader size={60} />
-                    )}
-                </div>
-            );
+            return null;
         }
 
         return (
