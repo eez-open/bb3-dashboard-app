@@ -38,6 +38,19 @@ app.commandLine.appendSwitch("disable-renderer-backgrounding");
 // app.allowRendererProcessReuse = false;
 
 app.on("ready", async function () {
+    var gotTheLock = app.requestSingleInstanceLock();
+    if (!gotTheLock) {
+        app.quit();
+        return;
+    }
+
+    app.on("second-instance", function (event, commandLine, workingDirectory) {
+        if (wnd) {
+            if (wnd.isMinimized()) wnd.restore();
+            wnd.focus();
+        }
+    });
+
     const { loadSettings } = await import("main/settings");
     await loadSettings();
 
@@ -50,7 +63,7 @@ app.on("ready", async function () {
 
     require("eez-studio-shared/service");
 
-    await openHomeWindow();
+    const wnd = await openHomeWindow();
 
     //await import("main/menu");
 });
@@ -144,8 +157,8 @@ function createWindow(params: IWindowParams) {
             backgroundThrottling: false
         },
         show: false,
-        width: manifestJson.window?.width,
-        height: manifestJson.window?.height
+        width: manifestJson.window?.width + 40,
+        height: manifestJson.window?.height + 80
     };
 
     settingsSetWindowBoundsIntoParams(params.url, windowContructorParams);
@@ -248,8 +261,7 @@ ipcMain.on(
         const window = findWindowByWebContents(event.sender);
         if (window) {
             if (!window.browserWindow.isMaximized()) {
-                // TODO doesn't work reliably
-                // window.browserWindow.setSize(size.width, size.height);
+                window.browserWindow.setSize(size.width, size.height);
             }
         }
     }

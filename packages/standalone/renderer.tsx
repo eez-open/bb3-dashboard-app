@@ -12,8 +12,6 @@ import {
     runInAction
 } from "mobx";
 import { observer } from "mobx-react";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
 
 import { sourceRootDir } from "eez-studio-shared/util";
 import { isDev } from "eez-studio-shared/util-electron";
@@ -65,10 +63,10 @@ const Main = observer(
     class Main extends React.Component<{ children: React.ReactNode }> {
         render() {
             return (
-                <DndProvider backend={HTML5Backend}>
+                <>
                     {this.props.children}
                     {notification.container}
-                </DndProvider>
+                </>
             );
         }
     }
@@ -81,53 +79,7 @@ const App = observer(
         constructor(props: any) {
             super(props);
 
-            settingsController.switchTheme(manifestJson.theme == "dark");
-
             projectEditorTab.loadProject();
-        }
-
-        sizeSent = false;
-
-        sendSize = () => {
-            const el1 = document.querySelector(
-                ".EezStudio_ProjectEditorMainContentWrapper > .EezStudio_ToolbarNav"
-            );
-            const el2 = document.querySelector(
-                ".EezStudio_ProjectEditorMainContentWrapper > .EezStudio_FlowViewerCanvasContainer .eez-canvas"
-            ) as HTMLElement | null;
-
-            if (
-                !this.sizeSent &&
-                projectEditorTab.projectStore &&
-                !projectEditorTab.loading &&
-                el2
-            ) {
-                if (el2.clientWidth > 0 && el2.clientHeight > 0) {
-                    const innerWidth = el2.clientWidth;
-                    const innerHeight =
-                        el1?.clientHeight ?? 0 + el2.clientHeight;
-
-                    ipcRenderer.send("set-window-size", {
-                        width:
-                            innerWidth +
-                            (window.outerWidth - window.innerWidth) +
-                            2,
-                        height:
-                            innerHeight +
-                            (window.outerHeight - window.innerHeight) +
-                            4
-                    });
-                    this.sizeSent = true;
-                }
-            }
-
-            if (!this.sizeSent) {
-                setTimeout(this.sendSize);
-            }
-        };
-
-        componentDidMount() {
-            this.sendSize();
         }
 
         render() {
@@ -226,7 +178,8 @@ export class ProjectEditorTab {
                         justifyContent: "center",
                         position: "absolute",
                         width: "100%",
-                        height: "100%"
+                        height: "100%",
+                        overflow: "hidden"
                     }}
                 >
                     {this.error ? (
@@ -357,6 +310,19 @@ async function beforeAppClose() {
 ////////////////////////////////////////////////////////////////////////////////
 
 async function main() {
+    settingsController.switchTheme(manifestJson.theme == "dark");
+
+    ipcRenderer.send("set-window-size", {
+        width:
+            (manifestJson.window?.width ?? 900) +
+            (window.outerWidth - window.innerWidth) +
+            2,
+        height:
+            (manifestJson.window?.height ?? 600) +
+            (window.outerHeight - window.innerHeight) +
+            2
+    });
+
     let nodeModuleFolders: string[];
     try {
         nodeModuleFolders = await getNodeModuleFolders();
