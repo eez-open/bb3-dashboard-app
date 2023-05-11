@@ -129,7 +129,6 @@ export class ProjectEditorTab {
                 return;
             }
 
-            await projectEditorStore.loadAllExternalProjects();
             if (closed) {
                 return;
             }
@@ -141,6 +140,12 @@ export class ProjectEditorTab {
                 this.projectStore = projectEditorStore;
                 this.projectStore?.setRuntimeMode(false);
                 this.loading = false;
+            });
+
+            setInterval(() => {
+                if (!this.projectStore?.runtime) {
+                    window.close();
+                }
             });
         } catch (err) {
             console.log(err);
