@@ -3514,8 +3514,8 @@
           "type": "SetVariableActionComponent",
           "left": 881,
           "top": 210,
-          "width": 190,
-          "height": 56,
+          "width": 189,
+          "height": 55,
           "customInputs": [],
           "customOutputs": [],
           "entries": [
@@ -3529,10 +3529,10 @@
         {
           "objID": "eefd1333-169c-4d59-9b88-1141f3188852",
           "type": "IsTrueActionComponent",
-          "left": -133,
-          "top": 504,
-          "width": 219,
-          "height": 73,
+          "left": -143,
+          "top": 592,
+          "width": 221,
+          "height": 70,
           "customInputs": [],
           "customOutputs": [],
           "value": "value >= number_input.min &&\nvalue <= number_input.max"
@@ -3540,10 +3540,10 @@
         {
           "objID": "82157cae-ba21-45c5-a58f-96e610057ab9",
           "type": "SCPIActionComponent",
-          "left": 227,
-          "top": 539,
-          "width": 546,
-          "height": 55,
+          "left": 217,
+          "top": 627,
+          "width": 544,
+          "height": 54,
           "customInputs": [],
           "customOutputs": [],
           "catchError": true,
@@ -3555,10 +3555,10 @@
         {
           "objID": "8904cadb-1738-4c1d-f810-57abe675b038",
           "type": "SetVariableActionComponent",
-          "left": 227,
-          "top": 622,
-          "width": 270,
-          "height": 56,
+          "left": 217,
+          "top": 710,
+          "width": 269,
+          "height": 55,
           "customInputs": [],
           "customOutputs": [],
           "entries": [
@@ -3572,10 +3572,10 @@
         {
           "objID": "993fbcd2-6f11-448b-abb8-1d07686402ad",
           "type": "SetVariableActionComponent",
-          "left": 976,
-          "top": 539,
+          "left": 966,
+          "top": 627,
           "width": 220,
-          "height": 76,
+          "height": 75,
           "customInputs": [],
           "customOutputs": [],
           "entries": [
@@ -3594,10 +3594,10 @@
         {
           "objID": "82faa7eb-3b33-4545-a9ae-6bb74f08e46c",
           "type": "SetVariableActionComponent",
-          "left": -512,
-          "top": 539,
-          "width": 282,
-          "height": 56,
+          "left": -522,
+          "top": 627,
+          "width": 281,
+          "height": 55,
           "customInputs": [],
           "customOutputs": [],
           "catchError": true,
@@ -3615,7 +3615,7 @@
           "left": 106,
           "top": -100,
           "width": 185,
-          "height": 55,
+          "height": 54,
           "customInputs": [],
           "customOutputs": [],
           "variable": "number_input.value"
@@ -3626,7 +3626,7 @@
           "left": 347,
           "top": -100,
           "width": 169,
-          "height": 56,
+          "height": 55,
           "customInputs": [
             {
               "objID": "fe18f248-ac57-421d-84f8-9b3f49f9deb3",
@@ -3646,16 +3646,16 @@
         {
           "objID": "2507b80f-7e1b-44b1-dc41-b95760cfc087",
           "type": "SetVariableActionComponent",
-          "left": 227,
-          "top": 447,
-          "width": 676,
-          "height": 56,
+          "left": 217,
+          "top": 535,
+          "width": 724,
+          "height": 55,
           "customInputs": [],
           "customOutputs": [],
           "entries": [
             {
               "objID": "fa7b15fa-2481-40e9-de6e-5401e8556aa5",
-              "variable": "number_input.unit == \"V\" ? slots[number_input.ch_idx].u_set : slots[number_input.ch_idx].i_set",
+              "variable": "number_input.unit == \"V\" ? slots[number_input.ch_idx - 1].u_set : slots[number_input.ch_idx - 1].i_set",
               "value": "value"
             }
           ]
